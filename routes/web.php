@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('user/show', 'UserController@show')->name('show');
+Route::get('user/show', 'UserController@show');
+Route::get('user/voucher', 'UserController@voucher');
+Route::get('/article', 'ArticleController@index');
