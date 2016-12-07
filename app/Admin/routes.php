@@ -10,7 +10,11 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
    // $router->get('/auth/articles', 'ArticleController@index');
-    $router->resource('/auth/articles', 'ArticleController');
+//    $router->resource('/articles', 'ArticleController');
+    $router->resource('/members', 'MemberController');
+    $router->resource('/orders', 'OrderController');
+    $router->resource('/vouchers', 'VoucherController');
+    $router->resource('/stores', 'StoreController');
 //     $router->resource('users', UserController::class);
 //    $router->resource('articles', ArticleController::class);
 
