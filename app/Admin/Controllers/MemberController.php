@@ -24,7 +24,7 @@ class MemberController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('用户列表');
             $content->description('description');
 
             $content->body($this->grid());
@@ -74,9 +74,12 @@ class MemberController extends Controller
         return Admin::grid(Member::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->name();
+            $grid->email();
+            $grid->phone();
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->created_at('创建于');
+            $grid->updated_at('修改于');
         });
     }
 

@@ -24,45 +24,14 @@ class VoucherController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('优惠码');
+            $content->description('显示生成的优惠码，可以下载打印');
             $content->body($this->grid());
         });
     }
 
-    /**
-     * Edit interface.
-     *
-     * @param $id
-     * @return Content
-     */
-    public function edit($id)
-    {
-        return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
 
-            $content->body($this->form()->edit($id));
-        });
-    }
-
-    /**
-     * Create interface.
-     *
-     * @return Content
-     */
-    public function create()
-    {
-        return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
-            $content->body($this->form());
-        });
-    }
 
     /**
      * Make a grid builder.
@@ -74,9 +43,13 @@ class VoucherController extends Controller
         return Admin::grid(Voucher::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->column('code');
+            $grid->is_used('是否使用?')->value(function ($is_used) {
+                return $is_used ? '是' : '否';
+            });
 
-            $grid->created_at();
-            $grid->updated_at();
+          /*  $grid->created_at();
+            $grid->updated_at();*/
         });
     }
 

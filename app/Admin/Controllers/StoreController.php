@@ -24,8 +24,8 @@ class StoreController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('店铺列表');
+            $content->description('可以创建自己所属店铺');
 
             $content->body($this->grid());
         });
@@ -41,7 +41,7 @@ class StoreController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
+            $content->header('编辑店铺');
             $content->description('description');
 
             $content->body($this->form()->edit($id));
@@ -57,7 +57,7 @@ class StoreController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('创建店铺');
             $content->description('description');
 
             $content->body($this->form());
@@ -74,9 +74,12 @@ class StoreController extends Controller
         return Admin::grid(Store::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->store_name();
+            $grid->address();
+            $grid->phone();
 
-            $grid->created_at();
-            $grid->updated_at();
+//            $grid->created_at();
+//            $grid->updated_at();
         });
     }
 
@@ -90,9 +93,12 @@ class StoreController extends Controller
         return Admin::form(Store::class, function (Form $form) {
 
             $form->display('id', 'ID');
+            $form->text('store_name','店铺名');
+            $form->text('address','店铺地址');
+            $form->text('phone','联系方式');
+            $form->display('created_at', '创建于');
+            $form->display('updated_at', '修改于');
 
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
         });
     }
 }
