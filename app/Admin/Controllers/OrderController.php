@@ -49,21 +49,7 @@ class OrderController extends Controller
         });
     }
 
-    /**
-     * Create interface.
-     *
-     * @return Content
-     */
-    public function create()
-    {
-        return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
-
-            $content->body($this->form());
-        });
-    }
 
     /**
      * Make a grid builder.
@@ -83,6 +69,7 @@ class OrderController extends Controller
             $grid->paid_amount('已支付金额');
             $grid->created_at('创建于');
 
+
         });
     }
 
@@ -99,6 +86,7 @@ class OrderController extends Controller
 
             $form->display('created_at', '创建于');
             $form->display('updated_at', '修改于');
+
         });
     }
 }
